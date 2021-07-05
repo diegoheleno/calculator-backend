@@ -1,0 +1,31 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/calculator/src",
+  "monorepo": true,
+  "root": "apps/calculator",
+  "entryFile":"main",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/calculator/tsconfig.app.json"
+  },
+  "projects": {
+    "calculator": {
+      "type": "application",
+      "root": "apps/calculator",
+      "entryFile": "main",
+      "sourceRoot": "apps/calculator/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/calculator/tsconfig.app.json"
+      }
+    },
+    "bcl": {
+      "type": "library",
+      "root": "libs/bcl",
+      "entryFile": "index",
+      "sourceRoot": "libs/bcl/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/bcl/tsconfig.lib.json"
+      }
+    }
+  }
+}

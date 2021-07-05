@@ -1,0 +1,125 @@
+{
+  "name": "calculator-api",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "clean": "rd /s /q dist",
+    "debug": "nest start --debug --watch",
+    "deploy": "nest build calculator && tar.exe -acf dist/calculator.zip dist/apps/calculator .ebextensions .platform package.json",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
+    "start": "node dist/apps/calculator/main",
+    "start:dev": "nest start --watch",
+    "start:debug": "nodemon --config nodemon.json",
+    "start:prod": "node dist/apps/calculator/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./apps/calculator/test/jest-e2e.json",
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/jwt": "^7.0.0",
+    "@nestjs/swagger": "^4.5.3",
+    "axios": "^0.19.2",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.2",
+    "cli-color": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.3",
+    "jwks-rsa": "^1.8.0",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.4",
+    "swagger-ui-express": "^4.1.4",
+    "util": "^0.12.3",
+    "uuid": "^8.3.2",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
+    "@nestjs/cli": "^7.0.0",
+    "@nestjs/common": "^7.6.17",
+    "@nestjs/cqrs": "^7.0.1",
+    "@nestjs/passport": "^7.1.5",
+    "@nestjs/platform-express": "^7.6.17",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.0.0",
+    "@nestjs/typeorm": "^7.1.5",
+    "@types/express": "^4.17.3",
+    "@types/jest": "25.1.4",
+    "@types/node": "^13.9.1",
+    "@types/passport-jwt": "^3.0.3",
+    "@types/supertest": "^2.0.8",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "copy-webpack-plugin": "^6.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.3",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "25.2.1",
+    "ts-loader": "^6.2.2",
+    "ts-node": "^8.10.1",
+    "ts-node-dev": "^1.1.6",
+    "tsconfig-paths": "^3.9.0",
+    "typeorm": "^0.2.34",
+    "typescript": "^3.7.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/apps/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "@app/bcl/(.*)": "<rootDir>/libs/bcl/src/$1",
+      "@app/bcl": "<rootDir>/libs/bcl/src"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "esmodules": true
+          }
+        }
+      ],
+      "@babel/preset-react",
+      "@babel/preset-flow"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}
