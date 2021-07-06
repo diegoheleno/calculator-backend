@@ -1,6 +1,6 @@
 import { calculatorRepository } from '../src/repositories/calculator.repository';
 import { CommandBus, EventBus, EventPublisher, QueryBus } from '@nestjs/cqrs';
-import { calculatorService } from '../src/services/calculator.service';
+import { calculatorService } from '../src/services/stage.service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from '../src/app.module';

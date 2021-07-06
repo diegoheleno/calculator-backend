@@ -1,21 +1,21 @@
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
-import { CalculatorService } from '../services/calculator.service';
-import { CreateStageBody, FetchStageQuery, UpdateStageBody } from '../dtos/calculator.dto';
+import { StageService } from '../services/stage.service';
+import { CreateStageBody, FetchStageQuery, UpdateStageBody } from '../dtos/stage.dto';
 import { Controller, Post, Res, Req, Body, Get, Put, Query, HttpStatus } from '@nestjs/common';
 
 @ApiTags('calculator')
 @ApiBearerAuth()
 @Controller('calculator')
-export class CalculatorController {
+export class StageController {
 
     constructor(
-        private readonly calculatorService: CalculatorService,
+        private readonly stageService: StageService,
     ) { }
 
     @Get('stage')
     async fetchStage(@Req() request, @Res() response, @Query() query: FetchStageQuery) {
         try {
-            const data = await this.calculatorService.fetchStage(query);
+            const data = await this.stageService.fetchStage(query);
 
             return response
                 .status(HttpStatus.OK)
@@ -34,7 +34,7 @@ export class CalculatorController {
     @ApiBody({ description: 'Create Stage', type: CreateStageBody })
     async createStage(@Req() request, @Res() response, @Body() body: CreateStageBody) {
         try {
-            const data = await this.calculatorService.createStage(body);
+            const data = await this.stageService.createStage(body);
 
             return response
                 .status(HttpStatus.CREATED)
@@ -53,7 +53,7 @@ export class CalculatorController {
     @ApiBody({ description: 'Update Stage', type: UpdateStageBody })
     async editStage(@Req() request, @Res() response, @Body() body: UpdateStageBody) {
         try {
-            const data = await this.calculatorService.updateStage(body);
+            const data = await this.stageService.updateStage(body);
 
             return response
                 .status(HttpStatus.CREATED)

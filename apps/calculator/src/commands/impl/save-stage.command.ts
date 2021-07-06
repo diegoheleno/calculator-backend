@@ -1,5 +1,5 @@
 import { ICommand } from '@nestjs/cqrs';
-import { CreateStageBody } from '../../dtos/calculator.dto';
+import { CreateStageBody } from '../../dtos/stage.dto';
 
 export class CreateStageCommand implements ICommand {
     constructor(

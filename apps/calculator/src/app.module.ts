@@ -3,7 +3,7 @@ import { Services } from './services';
 import { JwtStrategy } from '@app/bcl/auth/jwt-verify';
 import { CommandHandlers } from './commands/handlers';
 import { Module } from '@nestjs/common';
-import { CalculatorController } from './controllers/calculator.controller';
+import { Controllers } from './controllers';
 import { CqrsModule } from '@nestjs/cqrs';
 import { PassportModule } from '@nestjs/passport';
 import { MulterModule } from '@nestjs/platform-express/multer';
@@ -35,7 +35,7 @@ import { Entities } from "./entity"
     TypeOrmModule.forFeature([...Entities])
   ],
   controllers: [
-    CalculatorController
+    ...Controllers
   ],
   providers: [
     JwtStrategy,

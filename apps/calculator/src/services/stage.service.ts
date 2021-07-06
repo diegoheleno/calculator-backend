@@ -3,11 +3,11 @@ import { Stage } from '../entity/stage.entity';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GetStageQuery } from '../queries/Imp/get-stage.query';
 import { CreateStageCommand } from '../commands/impl/save-stage.command';
-import { CreateStageBody, FetchStageQuery, UpdateStageBody } from '../dtos/calculator.dto';
+import { CreateStageBody, FetchStageQuery, UpdateStageBody } from '../dtos/stage.dto';
 import { UpdateStageCommand } from '../commands/impl/update-stage.command';
 
 @Injectable()
-export class CalculatorService {
+export class StageService {
 
   constructor(
     private readonly queryBus: QueryBus,

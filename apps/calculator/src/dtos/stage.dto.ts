@@ -22,12 +22,6 @@ export class UpdateStageBody {
     @ApiProperty({ required: false }) state: number;
 }
 
-export class CreateOperationBody {
-    @ApiProperty({ required: true }) stageId: string;
-    @ApiProperty({ required: true }) type: number;
-    @ApiProperty({ required: true }) value: number;
-}
-
 export class CreateResultBody {
     @ApiProperty({ required: true }) stageId: string;
     @ApiProperty({ required: true }) value: number;

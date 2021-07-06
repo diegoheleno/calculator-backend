@@ -1,9 +1,9 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
-export class Operation extends BaseEntity {
+export class Operation {
     @PrimaryGeneratedColumn("uuid") id: string;
     @Column() stageId: string;
-    @Column() type: string;
+    @Column() action: number;
     @Column() value: number;
 }
