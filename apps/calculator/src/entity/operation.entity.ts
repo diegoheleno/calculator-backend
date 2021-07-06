@@ -4,6 +4,6 @@ import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 export class Operation {
     @PrimaryGeneratedColumn("uuid") id: string;
     @Column() stageId: string;
-    @Column() action: number;
+    @Column() type: number;
     @Column() value: number;
 }
