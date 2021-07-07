@@ -12,16 +12,16 @@ export class GetOperationHandler implements IQueryHandler {
         private readonly repository: Repository<Operation>
     ) { }
 
-    async execute(params: GetOperationQuery): Promise<Operation> {
+    async execute(params: GetOperationQuery): Promise<Operation[]> {
         
         if (!params.query.id && !params.query.stageId)
             throw { status: 404, message: 'Operation não encontrado' }
 
-        const operation = await this.repository.findOne({ ...params.query });
+        const operations = await this.repository.find({ ...params.query });
         
-        if (!operation)
+        if (!operations)
             throw { status: 404, message: 'Operation não encontrado' }
     
-        return operation
+        return operations
     }
 }

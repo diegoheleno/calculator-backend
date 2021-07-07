@@ -21,7 +21,7 @@ export class OperationService {
 //     return await this.commandBus.execute(new UpdateOperationCommand(operation));
 //   }
   
-  async fetchOperation(query: FetchOperationQuery): Promise<Operation> {
+  async fetchOperation(query: FetchOperationQuery): Promise<Operation[]> {
     return await this.queryBus.execute(new GetOperationQuery(query));
   }
 }
