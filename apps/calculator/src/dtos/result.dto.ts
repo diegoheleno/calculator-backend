@@ -6,6 +6,7 @@ export class FetchResultQuery {
 }
 
 export class CreateResultBody {
+    @ApiProperty({ required: false }) id: string;
     @ApiProperty({ required: true }) stageId: string;
     @ApiProperty({ required: true }) value: number;
 }

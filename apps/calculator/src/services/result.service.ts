@@ -21,7 +21,7 @@ export class ResultService {
 //     return await this.commandBus.execute(new UpdateResultCommand(result));
 //   }
   
-  async fetchResult(query: FetchResultQuery): Promise<Result> {
+  async fetchResult(query: FetchResultQuery): Promise<Result[]> {
     return await this.queryBus.execute(new GetResultQuery(query));
   }
 }

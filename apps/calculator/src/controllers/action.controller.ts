@@ -32,16 +32,18 @@ export class ActionController {
     }
 
     @Post('action')
-    @ApiBody({ description: 'Create Action', type: CreateActionBody })
-    async createAction(@Req() request, @Res() response, @Body() body: CreateActionBody) {
+    @ApiBody({ description: 'Create Action', type: [CreateActionBody] })
+    async createAction(@Req() request, @Res() response, @Body() body: CreateActionBody[]) {
         try {
-            const data = await this.actionService.createAction(body);
+            const promises = body.map(action => this.actionService.createAction(action));
+
+            const data = await Promise.all(promises);
 
             return response
                 .status(HttpStatus.CREATED)
                 .send({
                     status: HttpStatus.CREATED,
-                    message: 'Action criado com sucesso com id: ' + data.id,
+                    message: 'Actions criadas com sucesso',
                     data
                 });
         }

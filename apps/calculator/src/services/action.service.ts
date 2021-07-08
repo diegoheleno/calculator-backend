@@ -21,7 +21,7 @@ export class ActionService {
 //     return await this.commandBus.execute(new UpdateActionCommand(action));
 //   }
   
-  async fetchAction(query: FetchActionQuery): Promise<Action> {
+  async fetchAction(query: FetchActionQuery): Promise<Action[]> {
     return await this.queryBus.execute(new GetActionQuery(query));
   }
 }

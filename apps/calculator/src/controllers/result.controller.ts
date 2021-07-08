@@ -50,22 +50,22 @@ export class ResultController {
         }
     }
 
-    // @Put('result')
-    // @ApiBody({ description: 'Update Result', type: UpdateResultBody })
-    // async editResult(@Req() request, @Res() response, @Body() body: UpdateResultBody) {
-    //     try {
-    //         const data = await this.resultService.updateResult(body);
+    @Put('result')
+    @ApiBody({ description: 'Update Result', type: CreateResultBody })
+    async editResult(@Req() request, @Res() response, @Body() body: CreateResultBody) {
+        try {
+            const data = await this.resultService.createResult(body);
 
-    //         return response
-    //             .status(HttpStatus.CREATED)
-    //             .send({
-    //                 status: HttpStatus.CREATED,
-    //                 message: 'Result atualizado com sucesso com id: ' + data.id,
-    //                 data
-    //             });
-    //     }
-    //     catch (exception) {
-    //         return response.status(exception.status ?? 400).send(exception.message);
-    //     }
-    // }
+            return response
+                .status(HttpStatus.CREATED)
+                .send({
+                    status: HttpStatus.CREATED,
+                    message: 'Result atualizado com sucesso com id: ' + data.id,
+                    data
+                });
+        }
+        catch (exception) {
+            return response.status(exception.status ?? 400).send(exception.message);
+        }
+    }
 }

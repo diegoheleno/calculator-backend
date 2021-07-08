@@ -12,12 +12,12 @@ export class GetResultHandler implements IQueryHandler {
         private readonly repository: Repository<Result>
     ) { }
 
-    async execute(params: GetResultQuery): Promise<Result> {
+    async execute(params: GetResultQuery): Promise<Result[]> {
         
         if (!params.query.id && !params.query.stageId)
             throw { status: 404, message: 'Result não encontrado' }
 
-        const result = await this.repository.findOne({ ...params.query });
+        const result = await this.repository.find({ ...params.query });
         
         if (!result)
             throw { status: 404, message: 'Result não encontrado' }

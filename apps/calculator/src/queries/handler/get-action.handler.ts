@@ -12,12 +12,12 @@ export class GetActionHandler implements IQueryHandler {
         private readonly repository: Repository<Action>
     ) { }
 
-    async execute(params: GetActionQuery): Promise<Action> {
+    async execute(params: GetActionQuery): Promise<Action[]> {
         
         if (!params.query.id && !params.query.resultId)
             throw { status: 404, message: 'Action não encontrado' }
 
-        const action = await this.repository.findOne({ ...params.query });
+        const action = await this.repository.find({ ...params.query });
         
         if (!action)
             throw { status: 404, message: 'Action não encontrado' }
