@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Action } from '../../entity/action.entity';
+import { Action } from '../../../entity/action.entity';
 import { ICommandHandler, CommandHandler } from '@nestjs/cqrs';
-import { CreateActionCommand } from '../impl/save-action.command';
+import { CreateActionCommand } from '../../impl/save-action.command';
 
 @CommandHandler(CreateActionCommand)
 export class CreateActionHandler

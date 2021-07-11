@@ -1,7 +1,7 @@
-import { CreateOperationCommand } from '../impl/save-operation.command';
+import { CreateOperationCommand } from '../../impl/save-operation.command';
 import { ICommandHandler, CommandHandler } from '@nestjs/cqrs';
 import { Repository } from 'typeorm';
-import { Operation } from '../../entity/operation.entity';
+import { Operation } from '../../../entity/operation.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @CommandHandler(CreateOperationCommand)

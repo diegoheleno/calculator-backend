@@ -13,15 +13,19 @@ export class GetActionHandler implements IQueryHandler {
     ) { }
 
     async execute(params: GetActionQuery): Promise<Action[]> {
-        
+
         if (!params.query.id && !params.query.resultId)
             throw { status: 404, message: 'Action não encontrado' }
 
-        const action = await this.repository.find({ ...params.query });
-        
-        if (!action)
+        const response = await this.repository.find({ ...params.query });
+
+
+        if (!response)
             throw { status: 404, message: 'Action não encontrado' }
-    
+
+
+        const action = response.sort((a, b) => a.order < b.order ? -1 : 1);
+
         return action
     }
 }

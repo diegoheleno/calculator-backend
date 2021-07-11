@@ -1,8 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class FetchStageQuery {
-    @ApiProperty({ required: false }) id: string;
-    @ApiProperty({ required: false }) level: number;
+    @ApiProperty({ required: false }) id?: string;
+    @ApiProperty({ required: false }) level?: number;
 }
 
 export class CreateStageBody {

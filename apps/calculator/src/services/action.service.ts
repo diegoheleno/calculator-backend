@@ -4,6 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateActionCommand } from '../commands/impl/save-action.command';
 import { CreateActionBody, FetchActionQuery } from '../dtos/action.dto'
 import { GetActionQuery } from '../queries/Imp/get-action.query';
+import { DeleteActionCommand } from '../commands/impl/delete-action.command';
 
 @Injectable()
 export class ActionService {
@@ -16,12 +17,16 @@ export class ActionService {
   async createAction(action: CreateActionBody): Promise<Action> {
     return await this.commandBus.execute(new CreateActionCommand(action));
   }
-  
-//   async updateAction(action: UpdateActionBody): Promise<Action> {
-//     return await this.commandBus.execute(new UpdateActionCommand(action));
-//   }
-  
+
+  //   async updateAction(action: UpdateActionBody): Promise<Action> {
+  //     return await this.commandBus.execute(new UpdateActionCommand(action));
+  //   }
+
   async fetchAction(query: FetchActionQuery): Promise<Action[]> {
     return await this.queryBus.execute(new GetActionQuery(query));
+  }
+
+  async deleteAction(resultId: string): Promise<any> {
+    return await this.commandBus.execute(new DeleteActionCommand(resultId));
   }
 }

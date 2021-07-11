@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Result } from '../../entity/result.entity';
+import { Result } from '../../../entity/result.entity';
 import { ICommandHandler, CommandHandler } from '@nestjs/cqrs';
-import { CreateResultCommand } from '../impl/save-result.command';
+import { CreateResultCommand } from '../../impl/save-result.command';
 
 @CommandHandler(CreateResultCommand)
 export class CreateResultHandler

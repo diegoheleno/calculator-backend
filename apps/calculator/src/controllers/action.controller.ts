@@ -35,7 +35,7 @@ export class ActionController {
     @ApiBody({ description: 'Create Action', type: [CreateActionBody] })
     async createAction(@Req() request, @Res() response, @Body() body: CreateActionBody[]) {
         try {
-            const promises = body.map(action => this.actionService.createAction(action));
+            const promises = body.map((action, order) => this.actionService.createAction({ ...action, order }));
 
             const data = await Promise.all(promises);
 

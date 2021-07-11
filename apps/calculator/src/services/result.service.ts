@@ -4,6 +4,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateResultCommand } from '../commands/impl/save-result.command';
 import { CreateResultBody, FetchResultQuery } from '../dtos/result.dto'
 import { GetResultQuery } from '../queries/Imp/get-result.query';
+import { DeleteResultCommand } from '../commands/impl/delete-result.command';
 
 @Injectable()
 export class ResultService {
@@ -23,5 +24,9 @@ export class ResultService {
   
   async fetchResult(query: FetchResultQuery): Promise<Result[]> {
     return await this.queryBus.execute(new GetResultQuery(query));
+  }
+  
+  async deleteResult(stageId: string): Promise<any> {
+    return await this.commandBus.execute(new DeleteResultCommand(stageId));
   }
 }
